@@ -1,7 +1,10 @@
 #   ____________________________________________________________________________
 #   Server                                                                  ####
+
 # Install and load related packages 
 source("helpers_server.R")
+source("global.R")
+
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### Pretty-print function                                                   ####
@@ -13,6 +16,7 @@ anime <- read.csv('www/data/anime.csv')
 
 server <- function(input, output) {
   
+
   output$table_1 <- renderDataTable({
     
     # Optional: filter by genre
@@ -22,6 +26,16 @@ server <- function(input, output) {
         mutate(Genres = str_trim(Genres, side = "both")) %>%
         filter(Genres == input$Genre)
     }
+
+ # ------------------------- Introduction ---------------------------
+  
+  output$sort_table <- renderDataTable({
+    anime_sort <- anime[order(anime[, input$sort], decreasing = T), ] 
+    anime_sort %>%
+      dplyr::select(Name, Japanese.name, Genres, Type, Rating, input$sort)
+  }
+  )
+
   
     # Optional: filter by type
     if (input$Type != "All") {
@@ -39,4 +53,17 @@ server <- function(input, output) {
 
       
 } # server end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
