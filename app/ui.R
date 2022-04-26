@@ -72,7 +72,7 @@ ui <- navbarPage(
                         
                       )
                ),
-               mainPanel(dataTableOutput("table_1"))
+               dataTableOutput("table_1")
              ) # end fluidRow 
            ) # end fluidPage
            ), # end tabPanel

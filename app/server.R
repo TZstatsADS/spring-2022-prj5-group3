@@ -15,7 +15,8 @@ source("global.R")
 
 
 server <- function(input, output) {
-  
+
+# ------------------------- Introduction ---------------------------
 
   output$table_1 <- renderDataTable({
     
@@ -26,15 +27,6 @@ server <- function(input, output) {
         mutate(Genres = str_trim(Genres, side = "both")) %>%
         filter(Genres == input$Genre)
     }
-
- # ------------------------- Introduction ---------------------------
-  
-  output$sort_table <- renderDataTable({
-    anime_sort <- anime[order(anime[, input$sort], decreasing = T), ] 
-    anime_sort %>%
-      dplyr::select(Name, Japanese.name, Genres, Type, Rating, input$sort)
-  }
-  )
 
   
     # Optional: filter by type
@@ -49,6 +41,13 @@ server <- function(input, output) {
     
     anime[1:50, ]
   })
+  
+  output$sort_table <- renderDataTable({
+    anime_sort <- anime[order(anime[, input$sort], decreasing = T), ] 
+    anime_sort %>%
+      dplyr::select(Name, Japanese.name, Genres, Type, Rating, input$sort)
+  }
+  )
 
       
 } # server end

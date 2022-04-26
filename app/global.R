@@ -1,6 +1,7 @@
 # Data Processing
 
 # read data
+library(dplyr)
 anime <- read.csv('www/data/anime.csv')
 
 anime <- anime %>% 
