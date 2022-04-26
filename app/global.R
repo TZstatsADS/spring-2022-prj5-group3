@@ -22,14 +22,15 @@ if (!require("Hmisc")) {
   install.packages("Hmisc")
   library(Hmisc)
 }
-#anime <- read.csv('./www/data/anime.csv')
+
+anime <- read.csv('./www/data/anime.csv')
 
 animes <- read.csv("https://raw.githubusercontent.com/OkeydokeyWang/gr5243_nvc_data_files/main/animes.csv")
 profiles <- read.csv("https://raw.githubusercontent.com/OkeydokeyWang/gr5243_nvc_data_files/main/profiles.csv")
 
-#anime <- anime %>% 
-#  filter(Score != "Unknown" & Episodes != "Unknown" & Popularity != "Unknown" & 
-#           Favorites != "Unknown" & Watching != "Unknown") 
+anime <- anime %>% 
+  filter(Score != "Unknown" & Episodes != "Unknown" & Popularity != "Unknown" & 
+           Favorites != "Unknown" & Watching != "Unknown") 
 
 get_anime_genre <- function(row) {
   fromJSON( str_replace_all(row$genre, "\'", "\""))

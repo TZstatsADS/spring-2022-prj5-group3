@@ -83,38 +83,28 @@ ui <- navbarPage(
   # ----------------------------------
   # tab panel 3 - Recommendation 
   tabPanel("Recommendation", fluidPage(
-    
-    # App title ----
-    titlePanel("Safety Information"),
-    
-    # Sidebar layout with input and output definitions ----
-    sidebarLayout(
-      
-      # Sidebar panel for inputs ----
-      sidebarPanel(
+    fluidRow(
         
         # Input: Select for the borough ----
         textInput(inputId = "first_anime",
                   label = "Please Input the title of the last anime you liked:",
-                  value = "Nichijou"),
+                  value = "Naruto"),
         # Input: Select for the borough ----
         textInput(inputId = "second_anime",
                   label = "Please Input the title of the second to last anime you liked:",
                   value = ""),
-      ),
       
       # Main panel for displaying outputs ----
-      mainPanel(
-        verbatimTextOutput("recommended_text")
-        
-      )
-    )
+      verbatimTextOutput("recommended_text")
+ 
+    )# end fluidRow
+    
   )
   ),
                  
                  
                   
-  # tab panel 5 - About
+  # tab panel 4 - About
   tabPanel("About",
            includeHTML("about.html"), 
            shinyjs::useShinyjs(), 
