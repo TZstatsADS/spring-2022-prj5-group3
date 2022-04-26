@@ -65,14 +65,13 @@ server <- function(input, output) {
       } else {
         # Go with tri-gram
         df <- get_next(c(get_anime_id_by_title(input$second_anime), c(get_anime_id_by_title(input$first_anime))))
-        a = " (=‐ω‐=)... Interesting. I haven't seen that second anime before\n"
         b = "Here are list of animes users liked after "
         c = input$second_anime
         c1 = " and "
         c2 = input$first_anime
         d = ":\n"
         # Go with bi-gram
-        cat(c(a,b,c,c1,c2,d))
+        cat(c(b,c,c1,c2,d))
         df
       }
     }
