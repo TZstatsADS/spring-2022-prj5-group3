@@ -82,7 +82,34 @@ ui <- navbarPage(
   
   # ----------------------------------
   # tab panel 3 - Recommendation 
-  tabPanel("Recommendation"
+  tabPanel("Recommendation", fluidPage(
+    
+    # App title ----
+    titlePanel("Safety Information"),
+    
+    # Sidebar layout with input and output definitions ----
+    sidebarLayout(
+      
+      # Sidebar panel for inputs ----
+      sidebarPanel(
+        
+        # Input: Select for the borough ----
+        textInput(inputId = "first_anime",
+                  label = "Please Input the title of the last anime you liked:",
+                  value = "Nichijou"),
+        # Input: Select for the borough ----
+        textInput(inputId = "second_anime",
+                  label = "Please Input the title of the second to last anime you liked:",
+                  value = ""),
+      ),
+      
+      # Main panel for displaying outputs ----
+      mainPanel(
+        verbatimTextOutput("recommended_text")
+        
+      )
+    )
+  )
   ),
                  
                  

@@ -48,6 +48,41 @@ server <- function(input, output) {
       dplyr::select(Name, Japanese.name, Genres, Type, Rating, input$sort)
   }
   )
+  
+  recommended_df <- reactive({
+    if (is.na(get_anime_id_by_title(input$first_anime))) {
+      return(" (=‐ω‐=)... Interesting. I haven't seen that first anime before")
+    } else {
+      if (is.na(get_anime_id_by_title(input$second_anime))) {
+        a = " (=‐ω‐=)... Interesting. I haven't seen that second anime before\n"
+        b = "Here are list of animes users liked after "
+        c = input$first_anime
+        d = ":\n"
+        # Go with bi-gram
+        cat(c(a,b,c,d))
+        df <- get_next(c(get_anime_id_by_title(input$first_anime)))
+        df
+      } else {
+        # Go with tri-gram
+        df <- get_next(c(get_anime_id_by_title(input$second_anime), c(get_anime_id_by_title(input$first_anime))))
+        a = " (=‐ω‐=)... Interesting. I haven't seen that second anime before\n"
+        b = "Here are list of animes users liked after "
+        c = input$second_anime
+        c1 = " and "
+        c2 = input$first_anime
+        d = ":\n"
+        # Go with bi-gram
+        cat(c(a,b,c,c1,c2,d))
+        df
+      }
+    }
+  })
+  
+  output$recommended_text <- renderPrint({
+    a <- recommended_df()
+    a$title <- sapply(a$uid, get_anime_title_by_id)
+    a
+  })
 
       
 } # server end
