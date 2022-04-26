@@ -1,21 +1,7 @@
 #   ____________________________________________________________________________
 #   UI                                                                      ####
-
-library(shiny)
-library(leaflet)
-library(plotly)
-library(shinyjs)
-library(shinyBS)
-library(dtplyr)
-library(dplyr)
-library(DT)
-library(lubridate)
-library(stringr)
-require(rgdal)
-require(ggplot2)
-library(shinythemes)
-library(broom)
-
+# Install and load related packages 
+source("helpers_ui.R")
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### Colors                                                                  ####
@@ -64,8 +50,30 @@ ui <- navbarPage(
                  
                    # ----------------------------------
                    # tab panel 2 
-                   tabPanel("Events"
-                   ),                 
+                   tabPanel("Data Summary",
+                            fluidRow(
+                              column(3,
+                                     wellPanel(
+                                       h4("Find the top rated anime by type and genre"),
+                                       selectInput("Genre", "Select anime genre : ",
+                                                   c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
+                                                     "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
+                                                     "Harem", "Hentai", "Historical", "Horror", "Josei",       
+                                                     "Kids", "Magic", "Martial Arts", "Mecha", "Military",     
+                                                     "Music", "Mystery", "Parody", "Police", "Psychological",
+                                                     "Romance", "Samurai", "School", "Sci-Fi", "Seinen",       
+                                                     "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Slice of Life",
+                                                     "Space", "Sports", "Super Power", "Supernatural", "Thriller",     
+                                                     "Unknown", "Vampire", "Yaoi", "Yuri" )
+                                                   ),
+                                       selectInput("Type", "Select anime type: ",
+                                                   c("All","Movie", "Music", "ONA", "OVA", "Special", "TV", "Unknown")
+                                                   )
+                                       
+                                     )
+                              ),
+                              mainPanel(dataTableOutput("table_1"))
+                   )),                 
                  
                   
                    # tab panel 5 - About
