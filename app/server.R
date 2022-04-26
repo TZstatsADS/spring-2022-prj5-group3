@@ -1,142 +1,32 @@
 #   ____________________________________________________________________________
 #   Server                                                                  ####
-if (!require("shiny")) {
-  install.packages("shiny")
-  library(shiny)
-}
-if (!require("rgdal")) {
-  install.packages("rgdal")
-  library(rgdal)
-}
-if (!require("leaflet")) {
-  install.packages("leaflet")
-  library(leaflet)
-}
-if (!require("sp")) {
-  install.packages("sp")
-  library(sp)
-}
-if (!require("plotly")) {
-  install.packages("plotly")
-  library(plotly)
-}
-if (!require("dplyr")) {
-  install.packages("dplyr")
-  library(dplyr)
-}
-if (!require("dtplyr")) {
-  install.packages("dtplyr")
-  library(dtplyr)
-}
-if (!require("tidyr")) {
-  install.packages("tidyr")
-  library(tidyr)
-}
-if (!require("magrittr")) {
-  install.packages("magrittr")
-  library(magrittr)
-}
-if (!require("lubridate")) {
-  install.packages("lubridate")
-  library(lubridate)
-}
-if (!require("ggmap")) {
-  install.packages("ggmap")
-  library(ggmap)
-}
-if (!require("xts")) {
-  install.packages("xts")
-  library(xts)
-}
-if (!require("shinyjs")) {
-  install.packages("shinyjs")
-  library(shinyjs)
-}
-if (!require("urltools")) {
-  install.packages("urltools")
-  library(urltools)
-}
-if (!require("utils")) {
-  install.packages("utils")
-  library(utils)
-}
-if (!require("rvest")) {
-  install.packages("rvest")
-  library(rvest)
-}
-if (!require("stringr")) {
-  install.packages("stringr")
-  library(stringr)
-}
-if (!require("rgeos")) {
-  install.packages("rgeos")
-  library(rgeos)
-}
-if (!require("xml2")) {
-  install.packages("xml2")
-  library(xml2)
-}
-if (!require("selectr")) {
-  install.packages("selectr")
-  library(selectr)
-}
-if (!require("purrr")) {
-  install.packages("purrr")
-  library(purrr)
-}
-if (!require("raster")) {
-  install.packages("raster")
-  library(raster)
-}
-if (!require("RColorBrewer")) {
-  install.packages("RColorBrewer")
-  library(RColorBrewer)
-}
-if (!require("DT")) {
-  install.packages("DT")
-  library(DT)
-}
-if (!require("ggplot2")) {
-  install.packages("ggplot2")
-  library(ggplot2)
-}
-if (!require("readxl")) {
-  install.packages("readxl")
-  library(readxl)
-}
-if (!require("htmltools")) {
-  install.packages("htmltools")
-  library(htmltools)
-}
-if (!require("htmlwidgets")) {
-  install.packages("htmlwidgets")
-  library(htmlwidgets)
-}
-if (!require("sqldf")) {
-  install.packages("sqldf")
-  library(sqldf)
-}
-if (!require("rsconnect")) {
-  install.packages("rsconnect")
-  library(rsconnect)
-}
-if (!require("shinythemes")) {
-  install.packages("shinythemes")
-  library(shinythemes)
-}
-if (!require("broom")) {
-  install.packages("broom")
-  library(broom)
-}
-library(tidyverse)
+
+# Install and load related packages 
+source("helpers_server.R")
 source("global.R")
 
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### Pretty-print function                                                   ####
 
+anime <- read.csv('www/data/anime.csv')
+#anime_synopsis <- read.csv('www/data/anime_with_synopsis.csv')
+
+
+
 server <- function(input, output) {
   
+
+  output$table_1 <- renderDataTable({
+    
+    # Optional: filter by genre
+    if (input$Genre != "All") {
+      anime <- anime %>%
+        separate_rows(Genres, sep = ",") %>% 
+        mutate(Genres = str_trim(Genres, side = "both")) %>%
+        filter(Genres == input$Genre)
+    }
+
  # ------------------------- Introduction ---------------------------
   
   output$sort_table <- renderDataTable({
@@ -145,7 +35,22 @@ server <- function(input, output) {
       dplyr::select(Name, Japanese.name, Genres, Type, Rating, input$sort)
   }
   )
+
   
+    # Optional: filter by type
+    if (input$Type != "All") {
+      anime <- anime %>% filter(Type == input$Type)
+    }
+    
+    anime <- anime %>%
+      dplyr::select(MAL_ID:Rating) %>%
+      filter(Score != "Unknown") %>%
+      dplyr::select(Name, Score, Episodes, Aired) %>%
+      arrange(desc(Score))
+    
+    anime[1:50, ]
+  })
+
       
 } # server end
 
