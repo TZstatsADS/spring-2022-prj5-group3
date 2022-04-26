@@ -67,7 +67,7 @@ ui <- navbarPage(
                                       "Unknown", "Vampire", "Yaoi", "Yuri" )
                         ),
                         selectInput("Type", "Select anime type: ",
-                                    c("All","Movie", "Music", "ONA", "OVA", "Special", "TV", "Unknown")
+                                    c("All","Movie", "Music", "ONA", "OVA", "Special", "TV")
                         )
                         
                       )
