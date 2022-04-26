@@ -50,7 +50,30 @@ ui <- navbarPage(
                dataTableOutput('sort_table')
                
                
-             ) # end fluidRow
+             ), # end fluidRow
+             fluidRow(
+               column(3,
+                      wellPanel(
+                        h4("Find the top rated anime by type and genre"),
+                        selectInput("Genre", "Select anime genre : ",
+                                    c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
+                                      "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
+                                      "Harem", "Hentai", "Historical", "Horror", "Josei",       
+                                      "Kids", "Magic", "Martial Arts", "Mecha", "Military",     
+                                      "Music", "Mystery", "Parody", "Police", "Psychological",
+                                      "Romance", "Samurai", "School", "Sci-Fi", "Seinen",       
+                                      "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Slice of Life",
+                                      "Space", "Sports", "Super Power", "Supernatural", "Thriller",     
+                                      "Unknown", "Vampire", "Yaoi", "Yuri" )
+                        ),
+                        selectInput("Type", "Select anime type: ",
+                                    c("All","Movie", "Music", "ONA", "OVA", "Special", "TV", "Unknown")
+                        )
+                        
+                      )
+               ),
+               mainPanel(dataTableOutput("table_1"))
+             ) # end fluidRow 
            ) # end fluidPage
            ), # end tabPanel
   
@@ -85,56 +108,4 @@ ui <- navbarPage(
 
 
 
-
-
-
-
-
-
-                   
-                 
-                   # ----------------------------------
-                   # tab panel 2 
-                   tabPanel("Data Summary",
-                            fluidRow(
-                              column(3,
-                                     wellPanel(
-                                       h4("Find the top rated anime by type and genre"),
-                                       selectInput("Genre", "Select anime genre : ",
-                                                   c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
-                                                     "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
-                                                     "Harem", "Hentai", "Historical", "Horror", "Josei",       
-                                                     "Kids", "Magic", "Martial Arts", "Mecha", "Military",     
-                                                     "Music", "Mystery", "Parody", "Police", "Psychological",
-                                                     "Romance", "Samurai", "School", "Sci-Fi", "Seinen",       
-                                                     "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Slice of Life",
-                                                     "Space", "Sports", "Super Power", "Supernatural", "Thriller",     
-                                                     "Unknown", "Vampire", "Yaoi", "Yuri" )
-                                                   ),
-                                       selectInput("Type", "Select anime type: ",
-                                                   c("All","Movie", "Music", "ONA", "OVA", "Special", "TV", "Unknown")
-                                                   )
-                                       
-                                     )
-                              ),
-                              mainPanel(dataTableOutput("table_1"))
-                   )),                 
-                 
-                  
-                   # tab panel 5 - About
-                   tabPanel("About",
-                            includeHTML("about.html"),
-                            shinyjs::useShinyjs(),
-                            tags$head(
-                              tags$link(rel = "stylesheet", 
-                                        type = "text/css", 
-                                        href = "plugins/carousel.css"),
-                              tags$script(src = "plugins/holder.js")
-                            ),
-                            tags$style(type="text/css",
-                                       ".shiny-output-error { visibility: hidden; }",
-                                       ".shiny-output-error:before { visibility: hidden; }"
-                            )
-                   )
-)
 

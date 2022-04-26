@@ -9,7 +9,7 @@ source("global.R")
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### Pretty-print function                                                   ####
 
-anime <- read.csv('www/data/anime.csv')
+
 #anime_synopsis <- read.csv('www/data/anime_with_synopsis.csv')
 
 
@@ -44,7 +44,6 @@ server <- function(input, output) {
     
     anime <- anime %>%
       dplyr::select(MAL_ID:Rating) %>%
-      filter(Score != "Unknown") %>%
       dplyr::select(Name, Score, Episodes, Aired) %>%
       arrange(desc(Score))
     
