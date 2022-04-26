@@ -128,7 +128,7 @@ get_next <- function(existing_ids) {
     #cat(total * 100, "% of user last fav-ed this anime\n")
     colnames(result_df) <- c("uid", "pct", "genre", "popularity")
     result_df$pct <- as.numeric(result_df$pct)
-    result_df <- aggregate(. ~ uid + genre + popularity, data = result_df, sum)
+    result_df <- aggregate(. ~ uid + genre + popularity, data = result_df, max)
     result_df[order( -as.numeric(result_df$pct), as.numeric(result_df$popularity) ),]
   }
 }
