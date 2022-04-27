@@ -4,7 +4,7 @@
 #####
 
 
-The four tabs presented are a proof of concept, illustrating 
+
 - Introduction
 	+ Anime Trending #####
 	+ Anime Search #####
