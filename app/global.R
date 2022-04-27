@@ -29,18 +29,20 @@ if (!require("hash")) {
 }
 
 anime <- read.csv('./www/data/anime.csv')
-anime1 <- read.csv('./www/data/anime.csv')
 
 animes <- read.csv("https://raw.githubusercontent.com/OkeydokeyWang/gr5243_nvc_data_files/main/animes.csv")
 profiles <- read.csv("https://raw.githubusercontent.com/OkeydokeyWang/gr5243_nvc_data_files/main/profiles.csv")
+
+anime_join <-  merge(animes, anime, by.x = "uid", by.y = "MAL_ID")
 
 anime <- anime %>% 
   filter(Score != "Unknown" & Episodes != "Unknown" & Popularity != "Unknown" & 
            Favorites != "Unknown" & Watching != "Unknown") 
 
-anime1 <- anime1 %>% 
+anime_join <- anime_join %>% 
   filter(Score != "Unknown" & Episodes != "Unknown" & Popularity != "Unknown" & 
            Favorites != "Unknown" & Watching != "Unknown") 
+
 
 get_anime_genre <- function(row) {
   fromJSON( str_replace_all(row$genre, "\'", "\""))
@@ -158,7 +160,7 @@ myRender <- function(a, id){
     myurl <- paste0('https://myanimelist.net/anime/', a$uid[id])
     tryCatch({
         paste(
-          paste0('<img src="', a$image_url[id],'"width = "90%" height = "90%" align = "center">'),
+          paste0('<img src="', a$img_url[id],'"width = "90%" height = "90%" align = "center">'),
           paste0('<h4 align = "center"><a href = ', myurl, '>', a$title[id], '</a></h4>'),
           paste('<b>Percentage of Users:</b>', a$percentageOfUsers[id]),
           paste('<b>Popularity:</b>', a$popularity[id]),

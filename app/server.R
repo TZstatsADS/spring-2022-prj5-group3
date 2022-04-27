@@ -47,7 +47,7 @@ server <- function(input, output) {
     
     # Optional: filter by genre
     if (input$Genre1 != "All") {
-      anime1 <- anime1 %>%
+      anime_join <- anime_join %>%
         separate_rows(Genres, sep = ",") %>% 
         mutate(Genres = str_trim(Genres, side = "both")) %>%
         filter(Genres == input$Genre1)
@@ -56,15 +56,75 @@ server <- function(input, output) {
     
     # Optional: filter by type
     if (input$Type1 != "All") {
-      anime1 <- anime1 %>% filter(Type == input$Type1)
+      anime_join <- anime_join %>% filter(Type == input$Type1)
     }
     
-    anime1 <- anime1 %>%
-      dplyr::select(MAL_ID:Rating) %>%
-      dplyr::select(Name, Score, Episodes, Aired) %>%
-      arrange(desc(Score))
+    anime_join <- anime_join %>%
+      dplyr::select(Name, Score, Episodes, Aired)
     
-    anime1[sample(1:min(20,nrow(anime1))),][1:3,]
+    set.seed(123)
+    anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
+  })
+  
+  output$anime1 <- renderText({
+    # Optional: filter by genre
+    if (input$Genre1 != "All") {
+      anime_join <- anime_join %>%
+        separate_rows(Genres, sep = ",") %>% 
+        mutate(Genres = str_trim(Genres, side = "both")) %>%
+        filter(Genres == input$Genre1)
+    }
+    
+    
+    # Optional: filter by type
+    if (input$Type1 != "All") {
+      anime_join <- anime_join %>% filter(Type == input$Type1)
+    }
+    
+    set.seed(123)
+    anime_join <- anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
+    myRender(anime_join, 1)
+  })
+  
+  output$anime2 <- renderText({
+    # Optional: filter by genre
+    if (input$Genre1 != "All") {
+      anime_join <- anime_join %>%
+        separate_rows(Genres, sep = ",") %>% 
+        mutate(Genres = str_trim(Genres, side = "both")) %>%
+        filter(Genres == input$Genre1)
+    }
+    
+    
+    # Optional: filter by type
+    if (input$Type1 != "All") {
+      anime_join <- anime_join %>% filter(Type == input$Type1)
+    }
+    
+    set.seed(123)
+    anime_join <- anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
+    myRender(anime_join, 2)
+  })
+  
+  output$anime3 <- renderText({
+    # Optional: filter by genre
+    if (input$Genre1 != "All") {
+      anime_join <- anime_join %>%
+        separate_rows(Genres, sep = ",") %>% 
+        mutate(Genres = str_trim(Genres, side = "both")) %>%
+        filter(Genres == input$Genre1)
+    }
+    
+    
+    # Optional: filter by type
+    if (input$Type1 != "All") {
+      anime_join <- anime_join %>% filter(Type == input$Type1)
+    }
+    
+    
+    set.seed(123)
+    anime_join <- anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
+    myRender(anime_join, 3)
   })
   
   
@@ -111,7 +171,7 @@ server <- function(input, output) {
     a <- recommended_df()
     a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$img_url <- sapply(a$uid, get_anime_img_url_by_id)
     a$aired <- sapply(a$uid, get_anime_aired_by_id)
     a$score <- sapply(a$uid, get_anime_score_by_id)
     myRender(a, 1)
@@ -121,7 +181,7 @@ server <- function(input, output) {
     a <- recommended_df()
     a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$img_url <- sapply(a$uid, get_anime_img_url_by_id)
     a$aired <- sapply(a$uid, get_anime_aired_by_id)
     a$score <- sapply(a$uid, get_anime_score_by_id)
     if (is.na(a$title[2])){
@@ -136,7 +196,7 @@ server <- function(input, output) {
     a <- recommended_df()
     a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$img_url <- sapply(a$uid, get_anime_img_url_by_id)
     a$aired <- sapply(a$uid, get_anime_aired_by_id)
     a$score <- sapply(a$uid, get_anime_score_by_id)
     if (is.na(a$title[3])){
@@ -151,7 +211,7 @@ server <- function(input, output) {
     a <- recommended_df()
     a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$img_url <- sapply(a$uid, get_anime_img_url_by_id)
     a$aired <- sapply(a$uid, get_anime_aired_by_id)
     a$score <- sapply(a$uid, get_anime_score_by_id)
     if (is.na(a$title[4])){
@@ -166,7 +226,7 @@ server <- function(input, output) {
     a <- recommended_df()
     a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$img_url <- sapply(a$uid, get_anime_img_url_by_id)
     a$aired <- sapply(a$uid, get_anime_aired_by_id)
     a$score <- sapply(a$uid, get_anime_score_by_id)
     if (is.na(a$title[5])){
@@ -181,7 +241,7 @@ server <- function(input, output) {
     a <- recommended_df()
     a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$img_url <- sapply(a$uid, get_anime_img_url_by_id)
     a$aired <- sapply(a$uid, get_anime_aired_by_id)
     a$score <- sapply(a$uid, get_anime_score_by_id)
     if (is.na(a$title[6])){
