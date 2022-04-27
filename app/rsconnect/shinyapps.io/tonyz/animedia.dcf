@@ -5,10 +5,10 @@ account: tonyz
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6186300
-bundleId: 5843840
+bundleId: 5843890
 url: https://tonyz.shinyapps.io/animedia/
-when: 1651083434.15974
-lastSyncTime: 1651083434.15974
+when: 1651084257.52708
+lastSyncTime: 1651084257.52708
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: README.md|runApp.R
