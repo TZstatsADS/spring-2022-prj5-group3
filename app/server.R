@@ -9,9 +9,9 @@ source("global.R")
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### Pretty-print function                                                   ####
 
-
-#anime_synopsis <- read.csv('www/data/anime_with_synopsis.csv')
-
+# server <- function(input, output){
+#   options(shiny.maxRequestSize=60*1024^2)
+# }
 
 
 server <- function(input, output) {
@@ -81,11 +81,89 @@ server <- function(input, output) {
     a <- recommended_df()
   })
   
-  output$recommended_table <- renderDataTable({
+  output$my_rec01 <- renderText({
     a <- recommended_df()
+    a$percentageOfUsers <- paste(a$pct * 100, "%")
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$percentageOfUsers <- paste(format(round(a$pct * 100, 3), nsmall = 3), "%")
-    a[, c("title", "percentageOfUsers", "popularity", "genre")]
+    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$aired <- sapply(a$uid, get_anime_aired_by_id)
+    a$score <- sapply(a$uid, get_anime_score_by_id)
+    myRender(a, 1)
+  })
+  
+  output$my_rec02 <- renderText({
+    a <- recommended_df()
+    a$percentageOfUsers <- paste(a$pct * 100, "%")
+    a$title <- sapply(a$uid, get_anime_title_by_id)
+    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$aired <- sapply(a$uid, get_anime_aired_by_id)
+    a$score <- sapply(a$uid, get_anime_score_by_id)
+    if (is.na(a$title[2])){
+      paste(" ")
+    }
+    else (
+      myRender(a, 2)
+    )
+  })
+  
+  output$my_rec03 <- renderText({
+    a <- recommended_df()
+    a$percentageOfUsers <- paste(a$pct * 100, "%")
+    a$title <- sapply(a$uid, get_anime_title_by_id)
+    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$aired <- sapply(a$uid, get_anime_aired_by_id)
+    a$score <- sapply(a$uid, get_anime_score_by_id)
+    if (is.na(a$title[3])){
+      paste(" ")
+    }
+    else (
+      myRender(a, 3)
+    )
+  })
+  
+  output$my_rec04 <- renderText({
+    a <- recommended_df()
+    a$percentageOfUsers <- paste(a$pct * 100, "%")
+    a$title <- sapply(a$uid, get_anime_title_by_id)
+    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$aired <- sapply(a$uid, get_anime_aired_by_id)
+    a$score <- sapply(a$uid, get_anime_score_by_id)
+    if (is.na(a$title[4])){
+      paste(" ")
+    }
+    else (
+      myRender(a, 4)
+    )
+  })
+  
+  output$my_rec05 <- renderText({
+    a <- recommended_df()
+    a$percentageOfUsers <- paste(a$pct * 100, "%")
+    a$title <- sapply(a$uid, get_anime_title_by_id)
+    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$aired <- sapply(a$uid, get_anime_aired_by_id)
+    a$score <- sapply(a$uid, get_anime_score_by_id)
+    if (is.na(a$title[5])){
+      paste(" ")
+    }
+    else (
+      myRender(a, 5)
+    )
+  })
+  
+  output$my_rec06 <- renderText({
+    a <- recommended_df()
+    a$percentageOfUsers <- paste(a$pct * 100, "%")
+    a$title <- sapply(a$uid, get_anime_title_by_id)
+    a$image_url <- sapply(a$uid, get_anime_img_url_by_id)
+    a$aired <- sapply(a$uid, get_anime_aired_by_id)
+    a$score <- sapply(a$uid, get_anime_score_by_id)
+    if (is.na(a$title[6])){
+      paste(" ")
+    }
+    else (
+      myRender(a, 6)
+    )
   })
 
       
