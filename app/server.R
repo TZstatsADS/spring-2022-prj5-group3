@@ -46,7 +46,7 @@ server <- function(input, output) {
     anime_sort <- anime[order(anime[, input$sort], decreasing = T), ] 
     anime_sort %>%
       dplyr::select(Name, Japanese.name, Genres, Type, Rating, input$sort)
-  }
+  }, rownames = FALSE
   )
   
   recommended_df <- reactive({
@@ -86,7 +86,7 @@ server <- function(input, output) {
     a$title <- sapply(a$uid, get_anime_title_by_id)
     a$percentageOfUsers <- paste(format(round(a$pct * 100, 3), nsmall = 3), "%")
     a[, c("title", "percentageOfUsers", "popularity", "genre")]
-  })
+  }, rownames = FALSE)
 
       
 } # server end

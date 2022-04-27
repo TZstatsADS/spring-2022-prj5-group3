@@ -56,12 +56,13 @@ ui <- navbarPage(
              ), # end sub tab 1
              tabPanel("Search", 
                       fluidPage(
-             fluidRow(
-               column(3,
+
+                        fluidRow(
+               
                       h4(""),
                       h4(""),
                       h4("Find the top rated anime by type and genre"),
-                      wellPanel(
+                      column(2, wellPanel(
                         selectInput("Genre", "Select anime genre : ",
                                     c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
                                       "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
@@ -76,11 +77,11 @@ ui <- navbarPage(
                         selectInput("Type", "Select anime type: ",
                                     c("All","Movie", "Music", "ONA", "OVA", "Special", "TV")
                         )
-                        
                       )
+                      
                ),
-               column(9, dataTableOutput("table_1"))
-             ) # end fluidRow 
+               dataTableOutput("table_1")
+                        ) # end fluidRow
            ) # end fluidPage
              ) # end sub tab 2
            ) # end tabsetPanel
