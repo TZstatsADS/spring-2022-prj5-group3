@@ -8,7 +8,7 @@ source("global.R")
 
 
 ui <- navbarPage(
-  title = "Anime",
+  title = "Animedia",
   footer = includeHTML("footer.html"),
   fluid = TRUE, 
   collapsible = TRUE, 
@@ -38,8 +38,10 @@ ui <- navbarPage(
   
   # ----------------------------------
   # tab panel 2 
-  tabPanel("Introduction",
-           fluidPage(
+  tabPanel("Trending",
+           tabsetPanel(
+             tabPanel("Sort", 
+             fluidPage(
              fluidRow(
                selectInput("sort", label = h3("Sort by"),
                            choices = c("Score" = "Score", 
@@ -49,12 +51,18 @@ ui <- navbarPage(
                            ),
                dataTableOutput('sort_table')
                
+             )
+             ) # end fluidPage 1 
+             ), # end sub tab 1
+             tabPanel("Search", 
+                      fluidPage(
+
+                        fluidRow(
                
-             ), # end fluidRow
-             fluidRow(
-               column(3,
-                      wellPanel(
-                        h4("Find the top rated anime by type and genre"),
+                      h4(""),
+                      h4(""),
+                      h4("Find the top rated anime by type and genre"),
+                      column(2, wellPanel(
                         selectInput("Genre", "Select anime genre : ",
                                     c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
                                       "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
@@ -69,16 +77,46 @@ ui <- navbarPage(
                         selectInput("Type", "Select anime type: ",
                                     c("All","Movie", "Music", "ONA", "OVA", "Special", "TV")
                         )
-                        
                       )
+                      
                ),
                dataTableOutput("table_1")
-             ) # end fluidRow 
+                        ) # end fluidRow
            ) # end fluidPage
+             ) # end sub tab 2
+           ) # end tabsetPanel
            ), # end tabPanel
   
   
-  
+  # -------
+  # tab panel 2 
+  tabPanel("Grab a random Anime!",
+           fluidPage(
+             fluidRow(
+               column(3,
+                      wellPanel(
+                        h4("Find the top rated anime by type and genre"),
+                        selectInput("Genre1", "Select anime genre : ",
+                                    c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
+                                      "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
+                                      "Harem", "Hentai", "Historical", "Horror", "Josei",       
+                                      "Kids", "Magic", "Martial Arts", "Mecha", "Military",     
+                                      "Music", "Mystery", "Parody", "Police", "Psychological",
+                                      "Romance", "Samurai", "School", "Sci-Fi", "Seinen",       
+                                      "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Slice of Life",
+                                      "Space", "Sports", "Super Power", "Supernatural", "Thriller",     
+                                      "Unknown", "Vampire", "Yaoi", "Yuri" )
+                        ),
+                        selectInput("Type1", "Select anime type: ",
+                                    c("All","Movie", "Music", "ONA", "OVA", "Special", "TV")
+                        )
+                        
+                      )
+               ),
+               dataTableOutput("table_random")
+             ) # end fluidRow 
+           ) # end fluidPage
+  ), # end tabPanel
   
   # ----------------------------------
   # tab panel 3 - Recommendation 
