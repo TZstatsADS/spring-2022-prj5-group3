@@ -54,10 +54,10 @@ ui <- navbarPage(
              )
              ) # end fluidPage 1 
              ), # end sub tab 1
-             tabPanel("Search", 
-                      fluidPage(
+  tabPanel("Search", 
+              fluidPage(
 
-                        fluidRow(
+                 fluidRow(
                
                       h4(""),
                       h4(""),
@@ -81,7 +81,9 @@ ui <- navbarPage(
                       
                ),
                dataTableOutput("table_1")
+
                         ) # end fluidRow
+
            ) # end fluidPage
              ) # end sub tab 2
            ) # end tabsetPanel
@@ -114,7 +116,12 @@ ui <- navbarPage(
                       )
                ),
                dataTableOutput("table_random")
-             ) # end fluidRow 
+             ), # end fluidRow
+             fluidRow(
+               column(width = 2, htmlOutput("anime1")),
+               column(width = 2, htmlOutput("anime2")),
+               column(width = 2, htmlOutput("anime3"))
+             ) # end of fluidRow
            ) # end fluidPage
   ), # end tabPanel
   
@@ -134,11 +141,16 @@ ui <- navbarPage(
       
       # Main panel for displaying outputs ----
       verbatimTextOutput("recommended_text"),
-      dataTableOutput("recommended_table")
+      column(width = 2, htmlOutput("my_rec01")),
+      column(width = 2, htmlOutput("my_rec02")),
+      column(width = 2, htmlOutput("my_rec03")),
+      column(width = 2, htmlOutput("my_rec04")),
+      column(width = 2, htmlOutput("my_rec05")),
+      column(width = 2, htmlOutput("my_rec06"))
  
-    )# end fluidRow
-    
-  )
+     )# end fluidRow
+     
+   ) # end of fluidPage
   ),
                  
                  
