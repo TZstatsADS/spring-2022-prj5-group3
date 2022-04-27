@@ -8,7 +8,7 @@ source("global.R")
 
 
 ui <- navbarPage(
-  title = "Anime",
+  title = "Animedia",
   footer = includeHTML("footer.html"),
   fluid = TRUE, 
   collapsible = TRUE, 
@@ -38,8 +38,10 @@ ui <- navbarPage(
   
   # ----------------------------------
   # tab panel 2 
-  tabPanel("Introduction",
-           fluidPage(
+  tabPanel("Trending",
+           tabsetPanel(
+             tabPanel("Sort", 
+             fluidPage(
              fluidRow(
                selectInput("sort", label = h3("Sort by"),
                            choices = c("Score" = "Score", 
@@ -49,12 +51,17 @@ ui <- navbarPage(
                            ),
                dataTableOutput('sort_table')
                
-               
-             ), # end fluidRow
+             )
+             ) # end fluidPage 1 
+             ), # end sub tab 1
+             tabPanel("Search", 
+                      fluidPage(
              fluidRow(
                column(3,
+                      h4(""),
+                      h4(""),
+                      h4("Find the top rated anime by type and genre"),
                       wellPanel(
-                        h4("Find the top rated anime by type and genre"),
                         selectInput("Genre", "Select anime genre : ",
                                     c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
                                       "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
@@ -72,9 +79,11 @@ ui <- navbarPage(
                         
                       )
                ),
-               dataTableOutput("table_1")
+               column(9, dataTableOutput("table_1"))
              ) # end fluidRow 
            ) # end fluidPage
+             ) # end sub tab 2
+           ) # end tabsetPanel
            ), # end tabPanel
   
   
