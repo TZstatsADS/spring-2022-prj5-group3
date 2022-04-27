@@ -6,6 +6,7 @@ By developing this Shiny app, we aim to provide a smooth experience for beginner
 
 - Introduction
 	+ Anime Trending: In this section, you could navigate through the anime database that are sorted by score, popularity, favorites and watching status, and get to see what anime fans are interested in! Follow the pace of other anime fans and find the most popular and highly rated anime! 
+![Xnip2022-04-27_16-51-55](https://user-images.githubusercontent.com/45897080/165629010-a496f60a-f7f9-46b2-8a24-857d6f889226.jpg)
 	+ Anime Search: In this section, you could find a more tuned list by choosing your favorite type and genre, and see what are the top rated anime!
 <img width="1917" alt="image" src="https://user-images.githubusercontent.com/45897080/165626987-ad1907e3-f876-4949-808c-1d7d309e261f.png">
 
