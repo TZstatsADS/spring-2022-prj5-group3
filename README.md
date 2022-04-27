@@ -1,4 +1,4 @@
-# Project 5: Animedia -- Animation Trending and Recommendation APP
+# Project 5: Animedia: Animation Trending and Recommendation APP
 
 ## Overview
 #####
@@ -19,7 +19,7 @@ By developing this Shiny app, we aim to provide a smooth experience for beginner
 
 
 
-# Project title: Animedia -- Animation Trending and Recommendation APP
+# Project title: Animedia: Animation Trending and Recommendation APP
 Term: Spring 2022
 + Team #3
 + Team members
