@@ -23,6 +23,11 @@ if (!require("Hmisc")) {
   library(Hmisc)
 }
 
+if (!require("hash")) {
+  install.packages("hash")
+  library(hash)
+}
+
 anime <- read.csv('./www/data/anime.csv')
 
 animes <- read.csv("https://raw.githubusercontent.com/OkeydokeyWang/gr5243_nvc_data_files/main/animes.csv")
@@ -46,6 +51,18 @@ get_anime_row_by_id <- function(id) {
 
 get_anime_title_by_id <- function(id) {
   filter(animes, uid == id)[1, ]$title
+}
+
+get_anime_img_url_by_id <- function(id) {
+  filter(animes, uid == id)[1, ]$img_url
+}
+
+get_anime_aired_by_id <- function(id) {
+  filter(animes, uid == id)[1, ]$aired
+}
+
+get_anime_score_by_id <- function(id) {
+  filter(animes, uid == id)[1, ]$score
 }
 
 get_anime_id_by_title <- function(t) {
@@ -72,7 +89,6 @@ get_ngram_key <- function(ids) {
 
 
 N <- 3
-library(hash)
 counts_hashmap <- hash()
 choices_hashmap <- hash()
 
@@ -131,4 +147,23 @@ get_next <- function(existing_ids) {
     result_df <- aggregate(. ~ uid + genre + popularity, data = result_df, max)
     result_df[order( -as.numeric(result_df$pct), as.numeric(result_df$popularity) ),]
   }
+}
+
+myRender <- function(a, id){
+    myurl <- paste0('https://myanimelist.net/anime/', a$uid[id])
+    tryCatch({
+        paste(
+          paste0('<img src="', a$image_url[id],'"width = "90%" height = "90%" align = "center">'),
+          paste0('<h4 align = "center"><a href = ', myurl, '>', a$title[id], '</a></h4>'),
+          paste('<b>Percentage of Users:</b>', a$percentageOfUsers[id]),
+          paste('<b>Popularity:</b>', a$popularity[id]),
+          paste('<b>Genre:</b>', a$genre[id]),
+          paste('<b>Aired:</b>', a$aired[id]),
+          paste('<b>Score:</b>', a$score[id]),
+          sep = '<br>'
+        )
+    }, error = function(e){
+      paste('Anime Link Not Available')
+    })
+
 }
