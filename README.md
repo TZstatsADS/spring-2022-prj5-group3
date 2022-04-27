@@ -5,12 +5,19 @@
 By developing this Shiny app, we aim to provide a smooth experience for beginners to find their favorite anime! We basically implemented three functions: Anime trending and search, random anime recommendation, as well as a tuned recommendation system that looks for anime that people with similar interests like.
 
 - Introduction
-	+ Anime Trending #####
-	+ <img width="1916" alt="image" src="https://user-images.githubusercontent.com/45897080/165626448-b8d67cb4-9198-42f7-b1df-da43d4491e8e.png">
-	+ Anime Search #####
+	+ Anime Trending: In this section, you could navigate through the anime database that are sorted by score, popularity, favorites and watching status, and get to see what anime fans are interested in! Follow the pace of other anime fans and find the most popular and highly rated anime! 
+<img width="1916" alt="image" src="https://user-images.githubusercontent.com/45897080/165626448-b8d67cb4-9198-42f7-b1df-da43d4491e8e.png">
+	+ Anime Search: In this section, you could find a more tuned list by choosing your favorite type and genre, and see what are the top rated anime!
+<img width="1917" alt="image" src="https://user-images.githubusercontent.com/45897080/165626987-ad1907e3-f876-4949-808c-1d7d309e261f.png">
+
+- Grab a random anime!
+	+ In this section, you could enter the type and genre, and the system will randomly find three top-rated anime for you! They are specifically found for you, so definitely give them a try and you may find your destined favorite anime!
+<img width="1902" alt="image" src="https://user-images.githubusercontent.com/45897080/165627287-0087f7a9-5c89-4ce1-b172-e4e2dd6645b1.png">
+
 - Recommendation
 	+ Our goal is to give our customer a recommendation list knowing one or two of the customer's favorite animes. We use the language model to assign a probability to a piece of each anime's name. In our daily life, language models are often used in typing software and web pages to predict the next word or paragraph of words. 
 	+ We select 4000 users' favorite lists which contain anime lists sorted by time and popularity. We treat each anime name as a word and use Markov Assumption to infer the relationship between animes. We apply bigrams and trigrams models to give the customers a choice of writing down one or two anime they like. Our tab will return a list of anime ordered by probability and popularity. These are the animes users put in their favorite lists after the anime the customer typed in.   
+<img width="1891" alt="image" src="https://user-images.githubusercontent.com/45897080/165627362-ed528f94-4ea4-4152-8f9f-73f8eac4e148.png">
 
 
 
@@ -23,7 +30,7 @@ Term: Spring 2022
     + Qian, Weixun
     + Zheng, Haozhong
 + **Shiny Link**: #####
-+ [Contribution Statement] Kexin, Kaimin, Weixun, and Haozhong all contributed to the planning and ideas phase of the project. Kexin first implemented the shiny design including the Homepage and every team member implemented the About page. Kexin and Haozhong created the Information tab. Kaimin created the Recommendation tab and implemented the anime recommendation component using natural language processing language models. Kaimin initially updated the README and was later developed by #### modified the content. Each person added the description of their tab. Kexin is the presenter. #### packaged and uploaded the file to shiny Rstudio cloud. 
++ [Contribution Statement] Kexin, Kaimin, Weixun, and Haozhong all contributed to the planning and ideas phase of the project. Kexin first implemented the shiny design including the Homepage and every team member implemented the About page. Kexin and Haozhong created the Information tab. Kaimin created the Recommendation tab and implemented the anime recommendation component using natural language processing language models. Weixun implemented the random anime page, and Haozhong implemented the anime theme picture function that greatly enriches the content. Kaimin initially updated the README and was later developed by Weixun. Each person added the description of their tab. Kexin is the presenter. Haozhong packaged and uploaded the file to shiny Rstudio cloud. 
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is organized as follows.
 
