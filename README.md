@@ -29,7 +29,7 @@ Term: Spring 2022
     + Wang, Kaimin
     + Qian, Weixun
     + Zheng, Haozhong
-+ **Shiny Link**: #####
++ **Shiny Link**: https://tonyz.shinyapps.io/animedia/
 + [Contribution Statement] Kexin, Kaimin, Weixun, and Haozhong all contributed to the planning and ideas phase of the project. Kexin first implemented the shiny design including the Homepage and every team member implemented the About page. Kexin and Haozhong created the Information tab. Kaimin created the Recommendation tab and implemented the anime recommendation component using natural language processing language models. Weixun implemented the random anime page, and Haozhong implemented the anime theme picture function that greatly enriches the content. Kaimin initially updated the README and was later developed by Weixun. Each person added the description of their tab. Kexin is the presenter. Haozhong packaged and uploaded the file to shiny Rstudio cloud. 
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is organized as follows.
