@@ -2,8 +2,7 @@
 
 ## Overview
 #####
-
-
+By developing this Shiny app, we aim to provide a smooth experience for beginners to find their favorite anime! We basically implemented three functions: Anime trending and search, random anime recommendation, as well as a tuned recommendation system that looks for anime that people with similar interests like.
 
 - Introduction
 	+ Anime Trending #####
