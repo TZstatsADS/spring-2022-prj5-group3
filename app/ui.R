@@ -96,11 +96,16 @@ ui <- navbarPage(
       
       # Main panel for displaying outputs ----
       verbatimTextOutput("recommended_text"),
-      dataTableOutput("recommended_table")
+      column(width = 2, htmlOutput("my_rec01")),
+      column(width = 2, htmlOutput("my_rec02")),
+      column(width = 2, htmlOutput("my_rec03")),
+      column(width = 2, htmlOutput("my_rec04")),
+      column(width = 2, htmlOutput("my_rec05")),
+      column(width = 2, htmlOutput("my_rec06"))
  
-    )# end fluidRow
-    
-  )
+     )# end fluidRow
+     
+   ) # end of fluidPage
   ),
                  
                  
