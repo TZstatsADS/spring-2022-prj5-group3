@@ -97,7 +97,7 @@ ui <- navbarPage(
              fluidRow(
                column(3,
                       wellPanel(
-                        h4("Find the top rated anime by type and genre"),
+                        h4("Find random three animes by type and genre"),
                         selectInput("Genre1", "Select anime genre : ",
                                     c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
                                       "Demons", "Drama", "Ecchi", "Fantasy", "Game",         

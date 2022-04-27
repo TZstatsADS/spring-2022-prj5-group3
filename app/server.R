@@ -62,7 +62,7 @@ server <- function(input, output) {
     anime_join <- anime_join %>%
       dplyr::select(Name, Score, Episodes, Aired)
     
-    set.seed(123)
+    set.seed(5243)
     anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
   })
   
@@ -81,9 +81,16 @@ server <- function(input, output) {
       anime_join <- anime_join %>% filter(Type == input$Type1)
     }
     
-    set.seed(123)
+    set.seed(5243)
     anime_join <- anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
-    myRender(anime_join, 1)
+    
+    if (is.na(anime_join$title[1])){
+      paste(" ")
+    }
+    else (
+      myRandom(anime_join, 1)
+    )
+  
   })
   
   output$anime2 <- renderText({
@@ -101,9 +108,14 @@ server <- function(input, output) {
       anime_join <- anime_join %>% filter(Type == input$Type1)
     }
     
-    set.seed(123)
+    set.seed(5243)
     anime_join <- anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
-    myRender(anime_join, 2)
+    if (is.na(anime_join$title[2])){
+      paste(" ")
+    }
+    else (
+      myRandom(anime_join, 2)
+    )
   })
   
   output$anime3 <- renderText({
@@ -122,9 +134,14 @@ server <- function(input, output) {
     }
     
     
-    set.seed(123)
+    set.seed(5243)
     anime_join <- anime_join[sample(1:min(20,nrow(anime_join))),][1:3,]
-    myRender(anime_join, 3)
+    if (is.na(anime_join$title[3])){
+      paste(" ")
+    }
+    else (
+      myRandom(anime_join, 3)
+    )
   })
   
   

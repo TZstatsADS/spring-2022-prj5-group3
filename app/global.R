@@ -174,3 +174,21 @@ myRender <- function(a, id){
     })
 
 }
+
+myRandom <- function(a, id){
+    myurl <- paste0('https://myanimelist.net/anime/', a$uid[id])
+    tryCatch({
+        paste(
+          paste0('<img src="', a$img_url[id],'"width = "90%" height = "90%" align = "center">'),
+          paste0('<h4 align = "center"><a href = ', myurl, '>', a$title[id], '</a></h4>'),
+          paste('<b>Popularity:</b>', a$popularity[id]),
+          paste('<b>Genre:</b>', a$Genres[id]),
+          paste('<b>Aired:</b>', a$Aired[id]),
+          paste('<b>Score:</b>', a$Score[id]),
+          sep = '<br>'
+        )
+    }, error = function(e){
+      paste('Anime Link Not Available')
+    })
+
+}
