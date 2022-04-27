@@ -6,6 +6,7 @@ By developing this Shiny app, we aim to provide a smooth experience for beginner
 
 - Introduction
 	+ Anime Trending #####
+	+ <img width="1916" alt="image" src="https://user-images.githubusercontent.com/45897080/165626448-b8d67cb4-9198-42f7-b1df-da43d4491e8e.png">
 	+ Anime Search #####
 - Recommendation
 	+ Our goal is to give our customer a recommendation list knowing one or two of the customer's favorite animes. We use the language model to assign a probability to a piece of each anime's name. In our daily life, language models are often used in typing software and web pages to predict the next word or paragraph of words. 
