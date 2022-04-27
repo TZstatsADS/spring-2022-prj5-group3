@@ -7,7 +7,8 @@ By developing this Shiny app, we aim to provide a smooth experience for beginner
 - Introduction
   - Anime Trending: In this section, the customer could navigate through the anime database that are sorted by score, popularity, favorites and watching status, and get to see what anime fans are interested in! Follow the pace of other anime fans and find the most popular and highly rated anime!  <img width="1909" alt="image" src="https://user-images.githubusercontent.com/45897080/165629167-988ab221-7bb8-4a2b-9b05-970c88fa36a1.png">
 
-  - Anime Search: In this section, the customer could find a more tuned list by choosing some specific favorite type and genre, and see what are the top rated anime! <img width="1917" alt="image" src="https://user-images.githubusercontent.com/45897080/165626987-ad1907e3-f876-4949-808c-1d7d309e261f.png">
+  - Anime Search: In this section, the customer could find a more tuned list by choosing some specific favorite type and genre, and see what are the top rated anime! 
+  ![screenshot](data/20220427173304.png)
 
 - Grab a random anime!
   - In this section, the customers could enter the type and genre. The system will randomly find three top-rated anime for each person! They are specifically found for individuals，which may increase the curiosity and interest of customers on this website and their search for anime <img width="1902" alt="image" src="https://user-images.githubusercontent.com/45897080/165627287-0087f7a9-5c89-4ce1-b172-e4e2dd6645b1.png">
