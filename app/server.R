@@ -79,8 +79,12 @@ server <- function(input, output) {
   
   output$recommended_text <- renderPrint({
     a <- recommended_df()
+  })
+  
+  output$recommended_table <- renderDataTable({
+    a <- recommended_df()
     a$title <- sapply(a$uid, get_anime_title_by_id)
-    a$percentageOfUsers <- paste(a$pct * 100, "%")
+    a$percentageOfUsers <- paste(format(round(a$pct * 100, 3), nsmall = 3), "%")
     a[, c("title", "percentageOfUsers", "popularity", "genre")]
   })
 

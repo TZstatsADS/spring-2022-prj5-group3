@@ -95,7 +95,8 @@ ui <- navbarPage(
                   value = ""),
       
       # Main panel for displaying outputs ----
-      verbatimTextOutput("recommended_text")
+      verbatimTextOutput("recommended_text"),
+      dataTableOutput("recommended_table")
  
     )# end fluidRow
     
