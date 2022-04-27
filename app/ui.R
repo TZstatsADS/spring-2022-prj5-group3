@@ -88,7 +88,35 @@ ui <- navbarPage(
            ), # end tabPanel
   
   
-  
+  # -------
+  # tab panel 2 
+  tabPanel("Grab a random Anime!",
+           fluidPage(
+             fluidRow(
+               column(3,
+                      wellPanel(
+                        h4("Find the top rated anime by type and genre"),
+                        selectInput("Genre1", "Select anime genre : ",
+                                    c("All", "Action", "Adventure", "Cars", "Comedy", "Dementia",     
+                                      "Demons", "Drama", "Ecchi", "Fantasy", "Game",         
+                                      "Harem", "Hentai", "Historical", "Horror", "Josei",       
+                                      "Kids", "Magic", "Martial Arts", "Mecha", "Military",     
+                                      "Music", "Mystery", "Parody", "Police", "Psychological",
+                                      "Romance", "Samurai", "School", "Sci-Fi", "Seinen",       
+                                      "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Slice of Life",
+                                      "Space", "Sports", "Super Power", "Supernatural", "Thriller",     
+                                      "Unknown", "Vampire", "Yaoi", "Yuri" )
+                        ),
+                        selectInput("Type1", "Select anime type: ",
+                                    c("All","Movie", "Music", "ONA", "OVA", "Special", "TV")
+                        )
+                        
+                      )
+               ),
+               dataTableOutput("table_random")
+             ) # end fluidRow 
+           ) # end fluidPage
+  ), # end tabPanel
   
   # ----------------------------------
   # tab panel 3 - Recommendation 

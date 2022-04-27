@@ -39,8 +39,34 @@ server <- function(input, output) {
       dplyr::select(Name, Score, Episodes, Aired) %>%
       arrange(desc(Score))
     
-    anime[1:50, ]
+    
+    anime[1:50,]
   })
+  
+  output$table_random <- renderDataTable({
+    
+    # Optional: filter by genre
+    if (input$Genre1 != "All") {
+      anime1 <- anime1 %>%
+        separate_rows(Genres, sep = ",") %>% 
+        mutate(Genres = str_trim(Genres, side = "both")) %>%
+        filter(Genres == input$Genre1)
+    }
+    
+    
+    # Optional: filter by type
+    if (input$Type1 != "All") {
+      anime1 <- anime1 %>% filter(Type == input$Type1)
+    }
+    
+    anime1 <- anime1 %>%
+      dplyr::select(MAL_ID:Rating) %>%
+      dplyr::select(Name, Score, Episodes, Aired) %>%
+      arrange(desc(Score))
+    
+    anime1[sample(1:min(20,nrow(anime1))),][1:3,]
+  })
+  
   
   output$sort_table <- renderDataTable({
     anime_sort <- anime[order(anime[, input$sort], decreasing = T), ] 
